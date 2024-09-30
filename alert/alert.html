@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Alert</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .countdown-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+        .countdown-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .countdown-btn:active {
+            transform: translateY(0);
+        }
+
+        .modal {
+            display: none; 
+            position: fixed;
+            top: 20px; 
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            background-color: #dc3545;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ddd;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="countdownModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="countdownText">Danger! Alert akan ditutup dalam </p>
+        </div>
+
+        <button class="countdown-btn" onclick="startCountdown()">Munculkan Alert</button>
+    </div>
+
+    <script>
+        function startCountdown() {
+            let count = 5;
+            const countdownModal = document.getElementById('countdownModal');
+            const countdownText = document.getElementById('countdownText');
+            countdownModal.style.display = 'block';
+
+            const countdown = setInterval(() => {
+                countdownText.textContent = `Danger! Alert akan ditutup dalam ${count}`;
+                count--;
+
+                if (count < 1) {
+                    clearInterval(countdown);
+                    countdownModal.style.display = 'none'; 
+                }
+            }, 900);
+        }
+
+        function closeModal() {
+            const countdownModal = document.getElementById('countdownModal');
+            countdownModal.style.display = 'none';
+        }
+
+      
+        window.onclick = function(event) {
+            const countdownModal = document.getElementById('countdownModal');
+            if (event.target == countdownModal) {
+                countdownModal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

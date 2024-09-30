@@ -1,0 +1,140 @@
+<!-- Buat gambar yg sudah diblur kembali seperti semula setelah 5 detik -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Opacity</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+        select, input[type="submit"] {
+            padding: 12px 18px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        select:hover, input[type="submit"]:hover {
+            border-color: #007bff;
+            box-shadow: 0px 8px 12px rgba(0, 123, 255, 0.2);
+        }
+        img {
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.5s ease;
+        }
+        #countdown {
+            font-size: 20px;
+            color: white;
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            padding: 12px 24px;
+            border-radius: 25px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.5s ease forwards;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -100%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="countdown"></div>
+        <h2>Ubah Gambar dan Opacity</h2>
+
+        <select id="imageSelect">
+            <option value="img/anggrek.jpg">Gambar 1</option>
+            <option value="img/mawar.jpg">Gambar 2</option>
+            <option value="img/tulip.jpg">Gambar 3</option>
+        </select>
+        
+        <select id="opacitySelect">
+            <option value="1">1</option>
+            <option value="0.5">0.5</option>
+            <option value="0.2">0.2</option>
+        </select>
+        
+        <input type="submit" value="Ubah" onclick="changeImageAndOpacity()">
+        
+        <br><br>
+        
+        <img id="imageDisplay" src="img/anggrek.jpg" alt="Selected Image" style="opacity: 1; width: 300px;">
+        
+        <script>
+            function changeImageAndOpacity() {
+                var imageSelect = document.getElementById("imageSelect");
+                var opacitySelect = document.getElementById("opacitySelect");
+                var imageDisplay = document.getElementById("imageDisplay");
+                var countdownDisplay = document.getElementById("countdown");
+               
+                var selectedImage = imageSelect.value;
+                var selectedOpacity = opacitySelect.value;
+                
+                imageDisplay.src = selectedImage;
+                imageDisplay.style.opacity = selectedOpacity;
+
+                var secondsRemaining = 5;
+
+                countdownDisplay.textContent = "Gambar akan kembali seperti semula dalam " + secondsRemaining + " detik.";
+
+                var countdown = setInterval(function() {
+                    secondsRemaining--;
+                    countdownDisplay.textContent = "Gambar akan kembali seperti semula dalam " + secondsRemaining + " detik.";
+
+                    if (secondsRemaining <= 0) {
+                        clearInterval(countdown);
+                        imageDisplay.src = "img/anggrek.jpg";
+                        imageDisplay.style.opacity = "1";
+                        countdownDisplay.textContent = "Gambar telah kembali seperti semula.";
+                        
+                        setTimeout(function() {
+                            countdownDisplay.style.animation = "fadeOut 1s ease forwards";
+                        }, 1000);
+                    }
+                }, 1000);
+            }
+        </script>
+    </div>
+</body>
+</html>
+
+
+
+

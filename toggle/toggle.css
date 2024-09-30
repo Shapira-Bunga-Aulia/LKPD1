@@ -1,0 +1,47 @@
+/* main contentnya */
+.switch {
+  position: relative;   /* Membuat elemen dengan posisi relatif, sehingga elemen pseudo (::before) bisa ditempatkan relatif terhadapnya */
+  height: 1.5rem;
+  width: 3rem;
+  appearance: none;  /* Menghilangkan tampilan default dari checkbox sehingga bisa di-custom dengan CSS */
+  border-radius: 9999px;
+  background-color: rgba(100, 116, 139, 0.377); /* Memberikan warna latar belakang  saat switch dalam keadaan off (tidak dicentang) */
+  transition: all .3s ease;
+}
+
+.switch:checked {
+  background-color:  rgb(55, 9, 243);  /* Mengubah warna latar belakang ketika switch dalam keadaan on (dicentang) */
+}
+
+/* custom lingkarannya */
+.switch::before {
+  position: absolute;  /* Menempatkan elemen lingkaran secara absolut di dalam switch */
+  content: ""; /* Mengatur konten elemen lingkaran menjadi kosong */
+  top: calc(1.5rem - 1.6rem); /* Menempatkan lingkaran di posisi vertikal yang tepat di dalam switch */
+  display: block;  /* Menampilkan elemen lingkaran sebagai blok */
+  height: 1.6rem; /* Menentukan tinggi lingkaran di dalam switch */
+  width: 1.6rem; /* Menentukan lebar lingkaran di dalam switch */
+  border: 1px solid rgba(100, 116, 139, 0.527);  /* Memberikan border tipis dengan warna abu-abu transparan untuk lingkaran */
+  border-radius: 9999px; /* Membuat lingkaran sepenuhnya bulat */
+  background-color: rgba(255, 255, 255, 1); /* Memberikan warna latar belakang putih pada lingkaran */
+  box-shadow: 0 3px 10px rgba(100, 116, 139, 0.327); /* Menambahkan bayangan pada lingkaran untuk memberikan efek terangkat */
+  transition: all .3s ease;
+}
+
+.switch:hover::before {
+  /* Menambahkan bayangan yang lebih besar pada lingkaran saat switch dihover */
+  box-shadow: 0 0 0px 8px rgba(0, 0, 0, .15);
+}
+
+.switch:checked:hover::before {
+  /* Mengubah warna bayangan menjadi merah muda saat switch dicentang dan dihover */
+  box-shadow: 0 0 0px 8px rgba(236, 72, 153, .15);
+}
+
+.switch:checked:before {
+  /* Menggeser lingkaran ke kanan saat switch dalam keadaan on (dicentang) */
+  transform: translateX(100%);
+  
+  /* Mengubah warna border lingkaran menjadi biru sesuai dengan warna switch saat on */
+  border-color: rgb(55, 9, 243);
+}

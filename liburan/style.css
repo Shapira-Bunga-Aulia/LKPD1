@@ -1,0 +1,125 @@
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 70px 70px;
+}
+
+header .Logo img {
+    vertical-align: middle;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ffdd57;
+}
+
+.main-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.card1, .card2, .card3 {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    width: 80%; 
+    box-sizing: border-box;
+}
+
+.card1 img, .card2 img, .card3 img {
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+.card1 h2, .card2 h2, .card3 h2 {
+    color: #007bff;
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.card1 h2, .card2 h2, .card3 h2 {
+    color: #007bff;
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.icon {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 16px;
+    color: #999;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button[type="submit"] a {
+    color: white;
+    text-decoration: none;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card1, .card2, .card3 {
+        width: 90%; 
+        margin: 10px 0;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 5px 0;
+    }
+}
+

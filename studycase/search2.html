@@ -1,0 +1,37 @@
+<!-- Buat menjadi hanya bisa search putra dan putri menggunakan data lalu jika search yg lain hasilnya tidak akan muncul -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pencarian Nama</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Masukkan Nama">
+    <button id="search-button">Cari</button>
+    <div id="search-result"></div>
+  </div>
+<body>
+    <center>  
+      <script>
+        const inputPencarian = document.getElementById('search-input');
+        const tombolCari = document.getElementById('search-button');
+        const hasilPencarian = document.getElementById('search-result');
+    
+        tombolCari.addEventListener('click', () => {
+          const nilaiInput = inputPencarian.value.trim(); 
+          const namaTersedia = ['Putri', 'Putra', 'Asep'];
+          if (nilaiInput !== '') {
+            if (namaTersedia.includes(nilaiInput)) {
+              hasilPencarian.innerText = Nama ${nilaiInput} tersedia;
+            } else {
+              hasilPencarian.innerText = Nama ${nilaiInput} tidak tersedia;
+            }
+          } else {
+            hasilPencarian.innerText = 'Anda Tidak mencari data';
+          }
+        });
+      </script>
+    </center>
+</body>
+</html>
